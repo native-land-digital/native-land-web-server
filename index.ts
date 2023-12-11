@@ -20,7 +20,7 @@ const pool = new Pool({
 app.get("/api/feature/:slug", async (request, response) => {
   try {
     const result = await pool.query(
-      "SELECT name, polygon, polygon_style, pronunciation, sources, changelog, category, official_websites, created_at, last_modified_at, related, content FROM features WHERE slug=$1",
+      "SELECT name, polygon, polygon_style, pronunciation, sources, changelog, category, official_websites, created_at, last_modified_at, related FROM features WHERE slug=$1",
       [request.params.slug]
     );
     response.status(200).json({ data: result.rows[0] });
